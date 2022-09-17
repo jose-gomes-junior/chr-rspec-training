@@ -19,5 +19,14 @@ describe User do
 
       expect(user.full_name).to eq 'Damon Ramsey'
     end
+
+    it 'ignores empty attributes and returns full_name' do
+      user = User.new
+      user.first_name = 'Damon'
+      user.middle_name = ''
+      user.last_name = 'Ramsey'
+
+      expect(user.full_name).to eq 'Damon Ramsey'
+    end
   end
 end
