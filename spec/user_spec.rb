@@ -2,7 +2,7 @@ require 'spec_helper'
 require './user'
 
 describe User do
-  describe '#last_name' do
+  describe '#full_name' do
     it 'returns first_name, middle_name and last_name combination' do
       user = User.new
       user.first_name = 'Damon'
