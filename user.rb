@@ -1,9 +1,13 @@
 class User
-  def name=(name)
-    @name = name
-  end
+  attr_accessor :first_name, :middle_name, :last_name
 
-  def name
-    @name
+  ##
+  # Returns the capitalized combination of first_name, middle_name and last_name
+  def full_name
+    [first_name, middle_name, last_name].
+      reject(&:nil?).
+      reject(&:empty?).
+      map(&:capitalize).
+      join(' ')
   end
 end

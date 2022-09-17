@@ -2,33 +2,40 @@ require 'spec_helper'
 require './user'
 
 describe User do
-  describe '#name' do
-    it 'returns nil when not set' do
+  describe '#full_name' do
+    it 'returns first_name, middle_name and last_name combination' do
       user = User.new
+      user.first_name = 'Damon'
+      user.middle_name = 'G.'
+      user.last_name = 'Ramsey'
 
-      expect(user.name).to be_nil
+      expect(user.full_name).to eq 'Damon G. Ramsey'
     end
 
-    it 'returns name when it is set' do
+    it 'returns first_name and last_name combination' do
       user = User.new
-      user.instance_variable_set(:@name, 'Damon')
+      user.first_name = 'Damon'
+      user.last_name = 'Ramsey'
 
-      expect(user.instance_variable_get(:@name)).to eq 'Damon'
-    end
-  end
-
-  describe '#name=' do
-    it 'returns nil when name is not set' do
-      user = User.new
-
-      expect(user.name).to be_nil
+      expect(user.full_name).to eq 'Damon Ramsey'
     end
 
-    it 'returns name when it is set' do
+    it 'ignores empty attributes' do
       user = User.new
-      user.instance_variable_set(:@name, 'Damon')
+      user.first_name = 'Damon'
+      user.middle_name = ''
+      user.last_name = 'Ramsey'
 
-      expect(user.name).to eq 'Damon'
+      expect(user.full_name).to eq 'Damon Ramsey'
+    end
+
+    it 'capitalizes first letter of each name' do
+      user = User.new
+      user.first_name = 'damon'
+      user.last_name = 'ramsey'
+      user.middle_name = 'g.'
+
+      expect(user.full_name).to eq 'Damon G. Ramsey'
     end
   end
 end
