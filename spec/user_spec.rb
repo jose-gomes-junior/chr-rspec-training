@@ -28,5 +28,14 @@ describe User do
 
       expect(user.full_name).to eq 'Damon Ramsey'
     end
+
+    it 'capitalizes first letter of each name' do
+      user = User.new
+      user.first_name = 'damon'
+      user.last_name = 'ramsey'
+      user.middle_name = 'g.'
+
+      expect(user.full_name).to eq 'Damon G. Ramsey'
+    end
   end
 end
