@@ -2,40 +2,38 @@ require 'spec_helper'
 require './user'
 
 describe User do
+  let(:user) do
+    User.new.tap do |user|
+      user.first_name = first_name
+      user.middle_name = middle_name
+      user.last_name = last_name
+    end
+  end
+  let(:first_name) { 'Damon' }
+  let(:middle_name) { 'G.' }
+  let(:last_name) { 'Ramsey' }
+
   describe '#full_name' do
-    it 'returns first_name, middle_name and last_name combination' do
-      user = User.new
-      user.first_name = 'Damon'
-      user.middle_name = 'G.'
-      user.last_name = 'Ramsey'
+    let(:subject) { user.full_name }
 
-      expect(user.full_name).to eq 'Damon G. Ramsey'
+    it { is_expected.to eq 'Damon G. Ramsey' }
+
+    context 'when middle_name is nil' do
+      let(:middle_name) { }
+
+      it { is_expected.to eq 'Damon Ramsey' }
     end
 
-    it 'returns first_name and last_name combination' do
-      user = User.new
-      user.first_name = 'Damon'
-      user.last_name = 'Ramsey'
+    context 'when middle_name is blank' do
+      let(:middle_name) { '' }
 
-      expect(user.full_name).to eq 'Damon Ramsey'
+      it { is_expected.to eq 'Damon Ramsey' }
     end
 
-    it 'ignores empty attributes and returns full_name' do
-      user = User.new
-      user.first_name = 'Damon'
-      user.middle_name = ''
-      user.last_name = 'Ramsey'
+    context 'when name attributes are downcase' do
+      let(:first_name) { 'damon' }
 
-      expect(user.full_name).to eq 'Damon Ramsey'
-    end
-
-    it 'capitalizes first letter of each name' do
-      user = User.new
-      user.first_name = 'damon'
-      user.last_name = 'ramsey'
-      user.middle_name = 'g.'
-
-      expect(user.full_name).to eq 'Damon G. Ramsey'
+      it { is_expected.to eq 'Damon G. Ramsey' }
     end
   end
 end
