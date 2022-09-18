@@ -3,5 +3,6 @@ FactoryBot.define do
     first_name { 'Damon' }
     middle_name { 'G.' }
     last_name  { 'Ramsey' }
+    email { 'damon@telus.com' }
   end
 end
