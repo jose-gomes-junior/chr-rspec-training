@@ -2,13 +2,7 @@ require 'spec_helper'
 require './user'
 
 describe User do
-  let(:user) do
-    User.new.tap do |user|
-      user.first_name = first_name
-      user.middle_name = middle_name
-      user.last_name = last_name
-    end
-  end
+  let(:user) { build :user, first_name: first_name, middle_name: middle_name, last_name: last_name }
   let(:first_name) { 'Damon' }
   let(:middle_name) { 'G.' }
   let(:last_name) { 'Ramsey' }
