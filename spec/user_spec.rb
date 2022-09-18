@@ -24,7 +24,7 @@ describe User do
       it { is_expected.to eq 'Damon Ramsey' }
     end
 
-    context 'when name attributes are downcase' do
+    context 'when first_name is not capitalized' do
       let(:first_name) { 'damon' }
 
       it { is_expected.to eq 'Damon G. Ramsey' }
