@@ -5,10 +5,7 @@
 
 ### Add RSpec to the project
 ```
-echo "gem \"rspec\"
-"gem \"rspec-expectations\" >> Gemfile
-
-cat <<EOT >> Gemfile
+cat <<EOT>> Gemfile
 gem "rspec"
 gem "rspec-expectations"
 EOT
