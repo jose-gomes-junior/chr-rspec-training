@@ -1,5 +1,5 @@
 class User
-  attr_accessor :first_name, :middle_name, :last_name
+  attr_accessor :first_name, :middle_name, :last_name, :admin, :email
 
   ##
   # Returns the capitalized combination of first_name, middle_name and last_name
@@ -9,5 +9,9 @@ class User
       reject(&:empty?).
       map(&:capitalize).
       join(' ')
+  end
+
+  def admin?
+    email.to_s.end_with? '@telus.com'
   end
 end
