@@ -17,3 +17,13 @@ EOT
 
 ### Initialize RSpec
 `bundle exec rspec --init`
+
+### Docs
+RSpec Docs
+https://relishapp.com/rspec/rspec-core/v/3-11/docs
+
+FactoryBot - Getting Started
+https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
+
+Better Specs
+https://www.betterspecs.org/
